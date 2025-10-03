@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import HeroSection from './components/HeroSection';
+import AGWLogo from './AGW.png';
 import AboutSection from './components/AboutSection'; 
 import AboutUsPage from './pages/AboutUsPage'; 
 import ServicesSection from './components/ServicesSection';
@@ -24,6 +25,21 @@ import { heroSlides, servicesData, contactInfo, aboutContent } from './data/webs
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(window.scrollY);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY && window.scrollY > 50) {
+        setShowNavbar(false); // Hide navbar when scrolling down
+      } else {
+        setShowNavbar(true); // Show navbar when scrolling up
+      }
+      setLastScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -31,17 +47,19 @@ const App = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
     setIsMenuOpen(false);
+    setShowNavbar(false); // Hide navbar when a service is clicked
+    setTimeout(() => setShowNavbar(true), 800); // Show navbar again after 0.8s
   };
 
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
-        <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-50">
+        <nav className={`fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-50 transition-transform duration-300 ${showNavbar ? 'translate-y-0' : '-translate-y-full'}`}>
           <div className="px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <Link to="/" className="flex items-center space-x-2">
-                <span className="font-bold text-xl text-gray-800">ADMIRALS GROUP</span>
-              </Link> 
+                <img src={AGWLogo} alt="Admirals Group Logo" className="h-12 w-auto" />
+              </Link>
 
               <div className="hidden md:flex space-x-8">
                 <Link to="/" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">Home</Link>
@@ -100,7 +118,10 @@ const App = () => {
           <Route path="/career" element={<CareerPage />} />
         </Routes>
 
-        <Footer companyName="Admirals Group" />
+  <Footer companyName=
+  "Admirals Group"
+  // {<img src={AGWLogo} alt="Admirals Group Logo" className="h-8 w-auto inline" />} 
+  />
       </div>
     </Router>
   );

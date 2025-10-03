@@ -72,8 +72,8 @@ export const servicesData = [
     icon: "Settings", 
     title: "Engineering Services",
     description: [
-      "Agricultural Engineering ", "Civil Engineering ", "Mechanical Engineering. ",
-      "*Offering...*  ",
+      "Tailored to Agricultural, ", "Civil & ", "Mechanical Engineering. ",
+      "*Providing:*  ",
       "Metal fabrication: stainless and mild steel, aluminium, structural and civil works. ",
       "Earth works, prefab structures, concrete works, and buildings. ",
       "Maintenance and repair of boilers (water tube and fire tube). ",

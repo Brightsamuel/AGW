@@ -1,5 +1,90 @@
 import { Briefcase, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Tree, TreeNode } from 'react-organizational-chart'; // NEW
+
+// --- Org chart data (matches mermaid flow) ---
+const orgTree = {
+  title: 'Board of Directors',
+  color: 'green',
+  children: [
+    {
+      title: 'General Manager',
+      color: 'green',
+      children: [
+        { title: 'Chief Finance Officer', color: 'purple' },
+        {
+          title: 'Engineering Manager',
+            color: 'blue',
+            children: [
+              {
+                title: 'Electrical Engineer',
+                color: 'indigo',
+                children: [{ title: 'Electrical Technicians', color: 'red' }]
+              },
+              {
+                title: 'Mechanical Engineer',
+                color: 'indigo',
+                children: [{ title: 'Mechanical Technicians', color: 'blue' }]
+              },
+              {
+                title: 'Civil Engineer',
+                color: 'indigo',
+                children: [{ title: 'Civil Technicians', color: 'indigoDark' }]
+              }
+            ]
+        },
+        {
+          title: 'Operations Manager',
+          color: 'orange',
+          children: [{ title: 'Office Attendant', color: 'orangeLight' }]
+        },
+        {
+          title: 'HSE Manager',
+          color: 'red',
+          children: [
+            { title: 'Safety Coordinator', color: 'red' },
+            { title: 'First Aider', color: 'red' },
+            { title: 'Projects’ Coordinator', color: 'redAlt' },
+            { title: 'Store Keeper', color: 'redAlt' },
+            { title: 'Sales Executives', color: 'redAlt' }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+// Color utility (unchanged)
+const colorClasses = {
+  green: 'bg-green-500 border-green-700',
+  purple: 'bg-purple-500 border-purple-700',
+  blue: 'bg-blue-500 border-blue-700',
+  indigo: 'bg-indigo-600 border-indigo-800',
+  indigoDark: 'bg-indigo-700 border-indigo-900',
+  orange: 'bg-orange-500 border-orange-700',
+  orangeLight: 'bg-orange-400 border-orange-600',
+  red: 'bg-red-500 border-red-700',
+  redAlt: 'bg-red-400 border-red-600'
+};
+
+// REPLACED: previous OrgNode flex/connector logic with TreeNode-based recursion
+const RenderNode = ({ node }) => {
+  const hasChildren = node.children && node.children.length;
+  return (
+    <TreeNode
+      label={
+        <div
+          className={`min-w-[150px] inline-block text-white text-center font-medium text-[11px] md:text-sm py-2.5 px-3 rounded-lg shadow-md border ${colorClasses[node.color] || 'bg-gray-500 border-gray-700'} hover:shadow-xl transition`}
+        >
+          {node.title}
+        </div>
+      }
+    >
+      {hasChildren &&
+        node.children.map((child, idx) => <RenderNode key={node.title + idx} node={child} />)}
+    </TreeNode>
+  );
+};
 
 const TeamPage = () => {
   return (
@@ -16,127 +101,28 @@ const TeamPage = () => {
           </p>
         </div>
       </section>
-      <section className="py-12 md:py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          {/* Organizational Chart */}
-          <div className="container max-w-5xl mx-auto p-4">
-            {/* Level 1: Board of Directors */}
-            <h1 className="level-1 rectangle bg-green-400 text-center font-bold text-lg p-4 relative shadow-lg mx-auto w-1/2 mb-10 before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-              Board of Directors
-            </h1>
-
-            {/* Level 2: General Manager and Chief Financial Officer */}
-            <ol className="level-2-wrapper grid grid-cols-2 gap-8 relative before:content-[''] before:absolute before:-top-5 before:left-[25%] before:w-[50%] before:h-[2px] before:bg-black">
-              <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                <h2 className="level-2 rectangle bg-green-400 text-center font-bold text-lg p-4 relative shadow-lg mx-auto w-3/4 mb-10 before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                  General Manager
-                </h2>
-
-                {/* Level 3: Engineering Manager, Operations Manager, HSE Manager */}
-                <ol className="level-3-wrapper grid grid-cols-3 gap-4 relative before:content-[''] before:absolute before:-top-5 before:left-[16.67%] before:w-[66.66%] before:h-[2px] before:bg-black">
-                  <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                    <h3 className="level-3 rectangle bg-blue-400 text-center font-bold text-lg p-4 relative shadow-lg mx-auto w-full mb-10 before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                      Engineering Manager
-                    </h3>
-
-                    {/* Level 4: Electrical Engineer, Mechanical Engineer, Civil Engineer */}
-                    <ol className="level-4-wrapper grid grid-cols-3 gap-4 relative before:content-[''] before:absolute before:-top-5 before:left-[16.67%] before:w-[66.66%] before:h-[2px] before:bg-black">
-                      <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                        <h4 className="level-4 rectangle bg-indigo-600 text-white text-center font-bold text-lg p-4 relative shadow-lg before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                          Electrical Engineer
-                        </h4>
-                        <ol className="level-5-wrapper grid grid-cols-1 relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:w-[2px] before:h-5 before:bg-black">
-                          <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                            <h5 className="level-5 rectangle bg-red-400 text-white text-center font-bold text-lg p-4 relative shadow-lg">
-                              Electrical Technicians
-                            </h5>
-                          </li>
-                        </ol>
-                      </li>
-                      <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                        <h4 className="level-4 rectangle bg-indigo-600 text-white text-center font-bold text-lg p-4 relative shadow-lg before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                          Mechanical Engineer
-                        </h4>
-                        <ol className="level-5-wrapper grid grid-cols-1 relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:w-[2px] before:h-5 before:bg-black">
-                          <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                            <h5 className="level-5 rectangle bg-blue-400 text-white text-center font-bold text-lg p-4 relative shadow-lg">
-                              Mechanical Technicians
-                            </h5>
-                          </li>
-                        </ol>
-                      </li>
-                      <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                        <h4 className="level-4 rectangle bg-indigo-600 text-white text-center font-bold text-lg p-4 relative shadow-lg before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                          Civil Engineer
-                        </h4>
-                        <ol className="level-5-wrapper grid grid-cols-1 relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:w-[2px] before:h-5 before:bg-black">
-                          <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                            <h5 className="level-5 rectangle bg-indigo-600 text-white text-center font-bold text-lg p-4 relative shadow-lg">
-                              Civil Technicians
-                            </h5>
-                          </li>
-                        </ol>
-                      </li>
-                    </ol>
-                  </li>
-                  <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                    <h3 className="level-3 rectangle bg-orange-400 text-white text-center font-bold text-lg p-4 relative shadow-lg mx-auto w-full mb-10 before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                      Operations Manager
-                    </h3>
-
-                    {/* Level 4: Projects’ Coordinator, Store Keeper, Sales Executives */}
-                    <ol className="level-4-wrapper grid grid-cols-3 gap-4 relative before:content-[''] before:absolute before:-top-5 before:left-[16.67%] before:w-[66.66%] before:h-[2px] before:bg-black">
-                      <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                        <h4 className="level-4 rectangle bg-green-400 text-center font-bold text-lg p-4 relative shadow-lg">
-                          Projects’ Coordinator
-                        </h4>
-                      </li>
-                      <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                        <h4 className="level-4 rectangle bg-green-400 text-center font-bold text-lg p-4 relative shadow-lg before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                          Store Keeper
-                        </h4>
-                        <ol className="level-5-wrapper grid grid-cols-1 relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:w-[2px] before:h-5 before:bg-black">
-                          <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                            <h5 className="level-5 rectangle bg-gray-400 text-center font-bold text-lg p-4 relative shadow-lg">
-                              Office Attendant
-                            </h5>
-                          </li>
-                        </ol>
-                      </li>
-                      <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                        <h4 className="level-4 rectangle bg-green-400 text-center font-bold text-lg p-4 relative shadow-lg">
-                          Sales Executives
-                        </h4>
-                      </li>
-                    </ol>
-                  </li>
-                  <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                    <h3 className="level-3 rectangle bg-red-400 text-white text-center font-bold text-lg p-4 relative shadow-lg mx-auto w-full mb-10 before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                      HSE Manager
-                    </h3>
-
-                    {/* Level 4: Safety Coordinator, First Aider */}
-                    <ol className="level-4-wrapper grid grid-cols-2 gap-4 relative before:content-[''] before:absolute before:-top-5 before:left-1/4 before:w-1/2 before:h-[2px] before:bg-black">
-                      <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                        <h4 className="level-4 rectangle bg-red-400 text-white text-center font-bold text-lg p-4 relative shadow-lg">
-                          Safety Coordinator
-                        </h4>
-                      </li>
-                      <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                        <h4 className="level-4 rectangle bg-red-400 text-white text-center font-bold text-lg p-4 relative shadow-lg">
-                          First Aider
-                        </h4>
-                      </li>
-                    </ol>
-                  </li>
-                </ol>
-              </li>
-              <li className="relative before:content-[''] before:absolute before:-top-5 before:left-1/2 before:-translate-x-1/2 before:w-[2px] before:h-5 before:bg-black">
-                <h2 className="level-2 rectangle bg-green-400 text-center font-bold text-lg p-4 relative shadow-lg mx-auto w-3/4 mb-10">
-                  Chief Financial Officer
-                </h2>
-              </li>
-            </ol>
+      <section className="py-12 md:py-20 px-4 bg-gray-100">
+        <div className="max-w-[1500px] mx-auto">
+          <div className="w-full mx-auto p-6 md:p-8 overflow-x-auto bg-white rounded-lg shadow-lg">
+            {/* NEW org chart using react-organizational-chart */}
+            <div className="org-chart min-w-fit flex justify-center">
+              <Tree
+                lineWidth="2px"
+                lineColor="#4b5563"
+                lineBorderRadius="6px"
+                label={
+                  <div
+                    className={`min-w-[170px] inline-block text-white text-center font-semibold text-sm md:text-base py-3 px-4 rounded-lg shadow-md border ${colorClasses[orgTree.color]}`}
+                  >
+                    {orgTree.title}
+                  </div>
+                }
+              >
+                {orgTree.children.map((child, i) => (
+                  <RenderNode key={'root-' + i} node={child} />
+                ))}
+              </Tree>
+            </div>
           </div>
         </div>
       </section>
@@ -158,29 +144,18 @@ const TeamPage = () => {
   );
 };
 
-// Custom CSS for rectangles (simulating boxes in the chart)
+// UPDATED: remove old connector CSS; keep lightweight hover styling only
 const styles = `
-  .rectangle {
-    position: relative;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
+  .org-chart .react-organizational-chart-node {
+    display: inline-block;
   }
-  .rectangle:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  .org-chart .react-organizational-chart-node:hover > div > div {
+    transform: translateY(-2px);
   }
-  @media (max-width: 640px) {
-    .level-2-wrapper, .level-3-wrapper, .level-4-wrapper, .level-5-wrapper {
-      grid-template-columns: 1fr;
-    }
-    .level-2-wrapper:before, .level-3-wrapper:before, .level-4-wrapper:before, .level-5-wrapper:before {
-      left: 50%;
-      width: [2px];
-      height: 5px;
-    }
-  }
+  .org-chart div { transition: all .25s ease; }
 `;
 
+// REPLACED old stylesheet injection
 const styleSheet = new CSSStyleSheet();
 styleSheet.replaceSync(styles);
 document.adoptedStyleSheets = [styleSheet];

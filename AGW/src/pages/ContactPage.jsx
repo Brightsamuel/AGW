@@ -1,5 +1,6 @@
-import { Phone, Mail, Upload, ChevronRight } from 'lucide-react';
+import { Phone, Mail, Upload } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import AGWLogo from '../AGW.png';
 
 const ContactPage = () => {
   return (
@@ -8,9 +9,9 @@ const ContactPage = () => {
       style={{ background: 'linear-gradient(135deg, #e0f7fa 0%, #c8e6c9 100%)' }}>
       <section className="bg-gradient-to-br from-blue-700 to-indigo-900 text-white py-16 px-4 text-center">
         <div className="max-w-4xl mx-auto">
-          <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-6 mx-auto">
-            <span className="text-2xl font-bold text-blue-600">AD</span>
-          </div>
+              <Link to="/" className="flex justify-center w-full mb-6">
+            <img src={AGWLogo} alt="Admirals Group Logo" className="h-20 w-auto mx-auto" />
+              </Link>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
             Admirals Group
           </h1>
