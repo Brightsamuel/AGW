@@ -19,19 +19,19 @@ export const heroSlides = [
     title: "Civil Works",
     subtitle: "Constructing a future",
     description: "Expert construction of roads, bridges, and essential infrastructure.",
-    bgImage: "/images/img7.png",
+    bgImage: "/images/img13.png",
   },
   {
     title: "Oil and Gas",
     subtitle: "High quality...",
     description: " Our growth objective is to develop our high quality portfolio in a safe and sustainable way so that we can supply goods that help with upstream and downstream operations.",
-    bgImage: "/images/img15.png",
+    bgImage: "/images/img15.jpg",
   },
   {
     title: "General Supplies",
     subtitle: "Unleash Your Potential",
     description: "Reliable sourcing and delivery of quality goods for every need.",
-    bgImage: "/images/img1.png",
+    bgImage: "/images/img1.jpeg",
   }
 ];
 

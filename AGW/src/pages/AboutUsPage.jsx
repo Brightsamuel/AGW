@@ -5,7 +5,7 @@ const AboutUsPage = () => {
     <div className="min-h-screen bg-gray-50 pt-16">
       <section
         className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-800 text-white py-16 md:py-24 overflow-hidden"
-        style={{ backgroundImage: "url('/images/img1.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+        style={{ backgroundImage: "url('/images/img1.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
         {/* Overlay for gradient and darkening effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-800 opacity-80 pointer-events-none" />
