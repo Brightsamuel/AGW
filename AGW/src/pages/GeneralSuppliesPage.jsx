@@ -158,7 +158,7 @@ const GeneralSuppliesPage = () => {
               </div>
             )}
           </div>
-          <p className="text-sm text-gray-500 mt-4">21 seconds</p>
+          {/* <p className="text-sm text-gray-500 mt-4">21 seconds</p> */}
         </div>
       </section>
 

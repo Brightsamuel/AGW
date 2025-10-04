@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const images = [
   "/images/civil1.jpg",
@@ -10,13 +12,14 @@ const images = [
   "/images/civil7.jpg",
   "/images/civil8.jpg",
   "/images/civil9.jpg",
-  "/images/civil10.jpg",
+  // Note: civil10.jpg is used as poster for the video
   // Add more image paths as needed
 ];
 
 const CivilWorksPage = () => {
   const [bgIndex, setBgIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -123,18 +126,43 @@ const CivilWorksPage = () => {
         </div>
       </section>
 
-      {/* CTA Section - Simple and Distinct */}
+      {/* Integrated Video Showcase Section */}
+      <section className="py-16 px-4 bg-gradient-to-r from-blue-50 to-purple-50">
+        <div className="max-w-5xl mx-auto text-center">
+          {/* <h2 className="text-3xl font-bold text-gray-800 mb-6">Civil Works in Action</h2> */}
+          <p className="text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+            {/* Experience our civil works projects through this dynamic showcase video, highlighting our team's expertise and commitment to excellence. */}
+          </p>
+          <div className="relative bg-white rounded-lg shadow-xl overflow-hidden mx-auto max-w-4xl">
+            <video
+              ref={videoRef}
+              src="/images/civil10.mp4"
+              className="w-full h-[400px] md:h-[500px] object-cover"
+              loop
+              muted
+              autoPlay
+              preload="metadata"
+              playsInline
+              onEnded={() => {
+                // Optional: Restart or pause after loop
+              }}>
+            </video>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-gray-800 text-white py-16 px-4 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-4">Partner with Us for Your Civil Works Needs</h2>
           <p className="text-lg opacity-80 mb-8 leading-relaxed">
             Get in touch to discuss how we can support your projects with reliable civil works solutions.
           </p>
-          <a 
-            href="/contactus" 
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
-            Contact Us Today
-          </a>
+          <Link 
+            to="/contactus" 
+            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            Contact Us Today <ChevronRight className="w-5 h-5 ml-2 inline" />
+          </Link>
         </div>
       </section>
     </div>
