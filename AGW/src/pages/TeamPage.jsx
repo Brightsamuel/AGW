@@ -1,8 +1,7 @@
-import { Briefcase, ChevronRight } from 'lucide-react';
+import { Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Tree, TreeNode } from 'react-organizational-chart'; // NEW
 
-// --- Org chart data (matches mermaid flow) ---
 const orgTree = {
   title: 'Board of Directors',
   color: 'green',
@@ -54,7 +53,6 @@ const orgTree = {
   ]
 };
 
-// Color utility (unchanged)
 const colorClasses = {
   green: 'bg-green-500 border-green-700',
   purple: 'bg-purple-500 border-purple-700',
@@ -67,7 +65,6 @@ const colorClasses = {
   redAlt: 'bg-red-400 border-red-600'
 };
 
-// REPLACED: previous OrgNode flex/connector logic with TreeNode-based recursion
 const RenderNode = ({ node }) => {
   const hasChildren = node.children && node.children.length;
   return (
@@ -104,7 +101,6 @@ const TeamPage = () => {
       <section className="py-12 md:py-20 px-4 bg-gray-100">
         <div className="max-w-[1500px] mx-auto">
           <div className="w-full mx-auto p-6 md:p-8 overflow-x-auto bg-white rounded-lg shadow-lg">
-            {/* NEW org chart using react-organizational-chart */}
             <div className="org-chart min-w-fit flex justify-center">
               <Tree
                 lineWidth="2px"
@@ -128,23 +124,11 @@ const TeamPage = () => {
       </section>
       <section className="bg-gray-800 text-white py-16 px-4 text-center">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Learn More About Us</h2>
-          <p className="text-lg opacity-80 mb-8">
-            Explore how Admirals Group's structure supports our mission and services.
-          </p>
-          <Link
-            to="/about"
-            className="inline-flex items-center bg-gradient-to-r from-green-500 to-teal-500 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-green-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
-          >
-            Meet the team <ChevronRight className="w-5 h-5 ml-2" />
-          </Link>
         </div>
       </section>
     </div>
   );
 };
-
-// UPDATED: remove old connector CSS; keep lightweight hover styling only
 const styles = `
   .org-chart .react-organizational-chart-node {
     display: inline-block;
@@ -154,8 +138,6 @@ const styles = `
   }
   .org-chart div { transition: all .25s ease; }
 `;
-
-// REPLACED old stylesheet injection
 const styleSheet = new CSSStyleSheet();
 styleSheet.replaceSync(styles);
 document.adoptedStyleSheets = [styleSheet];

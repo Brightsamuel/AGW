@@ -19,12 +19,11 @@ const OilAndGasPage = () => {
       setTimeout(() => {
         setBgIndex((prev) => (prev + 1) % images.length);
         setIsTransitioning(false);
-      }, 500); // Half the transition time for smooth overlap
-    }, 5000); // Shuffle every 5 seconds
+      }, 500); 
+    }, 5000); 
     return () => clearInterval(interval);
   }, []);
 
-  // Preload images to prevent loading delays
   useEffect(() => {
     images.forEach((image) => {
       const img = new Image();

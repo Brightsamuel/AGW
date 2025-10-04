@@ -9,7 +9,7 @@ const CertificationPage = () => {
           <Award size={56} className="mx-auto mb-5" />
           <h1 className="text-4xl md:text-5xl font-extrabold mb-3">Admirals Group Certification</h1>
           <p className="text-lg md:text-2xl opacity-90 mb-6">
-            Highlighting our commitment to excellence and quality.
+            Highlighting our commitment steps to excellence and quality.
           </p>
           <p className="text-base md:text-lg opacity-80 max-w-2xl mx-auto">
             This certification reflects Admirals Group's dedication to delivering high-quality services.
@@ -31,16 +31,16 @@ const CertificationPage = () => {
       </section>
       <section className="bg-gray-800 text-white py-16 px-4 text-center">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Learn More About Us</h2>
+          {/* <h2 className="text-3xl md:text-4xl font-bold mb-4">Learn More About Us</h2> */}
           <p className="text-lg opacity-80 mb-8">
-            Explore how our certifications support our mission and services.
+            {/* Explore how our certifications support our mission and services. */}
           </p>
-          <Link
+          {/* <Link
             to="/about"
             className="inline-flex items-center bg-gradient-to-r from-green-500 to-teal-500 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-green-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             About Us <ChevronRight className="w-5 h-5 ml-2" />
-          </Link>
+          </Link> */}
         </div>
       </section>
     </div>

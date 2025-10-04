@@ -63,8 +63,8 @@ const HSEPage = () => {
       {/* Call to Action */}
       <section className="bg-gray-800 text-white py-16 px-4 text-center">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Learn More About Us</h2>
-          <p className="text-lg opacity-80 mb-8">
+          {/* <h2 className="text-3xl md:text-4xl font-bold mb-4">Learn More About Us</h2> */}
+          {/* <p className="text-lg opacity-80 mb-8">
             Discover how our HSE policies support our mission and services.
           </p>
           <Link
@@ -72,7 +72,7 @@ const HSEPage = () => {
             className="inline-flex items-center bg-gradient-to-r from-green-500 to-teal-500 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-green-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             About Us
-          </Link>
+          </Link> */}
         </div>
       </section>
     </div>
