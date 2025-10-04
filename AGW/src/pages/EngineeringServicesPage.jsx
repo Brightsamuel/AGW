@@ -3,7 +3,7 @@ import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const images = [
-  "/images/img2.jpg",
+  "/images/img4.jpg",
   "/images/eng1.jpg",
   "/images/eng2.jpg",
   "/images/eng3.jpg",

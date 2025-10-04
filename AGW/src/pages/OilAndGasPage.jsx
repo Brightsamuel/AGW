@@ -135,12 +135,12 @@ const OilAndGasPage = () => {
           <p className="text-lg opacity-80 mb-8 leading-relaxed">
             Contact us for professional pressure testing services tailored to your oil and gas needs.
           </p>
-          <Link 
+          {/* <Link 
             to="/contact" 
             className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             Schedule Testing <ChevronRight className="w-5 h-5 ml-2 inline" />
-          </Link>
+          </Link> */}
         </div>
       </section>
     </div>

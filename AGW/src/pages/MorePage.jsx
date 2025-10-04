@@ -43,54 +43,64 @@ const MorePage = () => {
           <p className="text-lg opacity-80 max-w-2xl mx-auto">
             Meet the our expert team, a group of dedicated individuals committed to excellence in coding and technology. Our team is passionate about creating innovative solutions that make a difference in the world.
           </p>
-          <Link
+          {/* <Link
             to="/contactus"
             className="mt-8 bg-white text-indigo-700 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             Reach out to us!
-          </Link>
+          </Link> */}
         </div>
       </section>
 
       <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-800 text-center mb-12"></h2>
-          <div className="grid md:grid-cols-3 gap-10">
-            <div className="bg-white p-8 rounded-2xl shadow-md text-center hover:shadow-xl transition-shadow duration-300">
-              <GitBranch size={48} className="text-blue-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div className="bg-white p-10 md:p-12 rounded-2xl shadow-md text-center hover:shadow-xl transition-shadow duration-300">
+              <GitBranch size={64} className="text-blue-600 mx-auto mb-6" />
+              <h3 className="text-3xl md:text-3xl font-bold text-gray-800 mb-4">
                 <Link to="/hse">HSE</Link>
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-700 text-lg md:text-xl">
                 Work on real-world projects, from web development to mobile apps, Landmark a strong portfolio.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-md text-center hover:shadow-xl transition-shadow duration-300">
-              <Users size={48} className="text-purple-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">
+            <div className="bg-white p-10 md:p-12 rounded-2xl shadow-md text-center hover:shadow-xl transition-shadow duration-300">
+              <Users size={64} className="text-purple-600 mx-auto mb-6" />
+              <h3 className="text-3xl md:text-3xl font-bold text-gray-800 mb-4">
                 <Link to="/team">Organisation Structure</Link>
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-700 text-lg md:text-xl">
                 Learn from peers and mentors, fostering teamwork and problem-solving skills.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-md text-center hover:shadow-xl transition-shadow duration-300">
-              <Award size={48} className="text-orange-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">
+            <div className="bg-white p-10 md:p-12 rounded-2xl shadow-md text-center hover:shadow-xl transition-shadow duration-300">
+              <Award size={64} className="text-orange-600 mx-auto mb-6" />
+              <h3 className="text-3xl md:text-3xl font-bold text-gray-800 mb-4">
                 <Link to="/certification">Certification</Link>
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-700 text-lg md:text-xl">
                 Stay updated with the latest tech trends and develop skills for future careers in tech.
               </p>
             </div>
             {/* Career Tab */}
-            <div className="bg-white p-8 rounded-2xl shadow-md text-center hover:shadow-xl transition-shadow duration-300">
-              <Laptop size={48} className="text-green-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">
+            <div className="bg-white p-10 md:p-12 rounded-2xl shadow-md text-center hover:shadow-xl transition-shadow duration-300">
+              <Laptop size={64} className="text-green-600 mx-auto mb-6" />
+              <h3 className="text-3xl md:text-3xl font-bold text-gray-800 mb-4">
                 <Link to="/career">Career</Link>
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-700 text-lg md:text-xl">
                 Explore exciting career opportunities and join our dynamic team to make a difference.
+              </p>
+            </div>
+            {/* Experience / Clients Tab */}
+            <div className="bg-white p-10 md:p-12 rounded-2xl shadow-md text-center hover:shadow-xl transition-shadow duration-300">
+              <Users size={64} className="text-teal-600 mx-auto mb-6" />
+              <h3 className="text-3xl md:text-3xl font-bold text-gray-800 mb-4">
+                <Link to="/client">Experience / Clients</Link>
+              </h3>
+              <p className="text-gray-700 text-lg md:text-xl">
+                View our valued clients and project experience — see who trusts our services.
               </p>
             </div>
           </div>

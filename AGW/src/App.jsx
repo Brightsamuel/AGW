@@ -19,6 +19,7 @@ import TeamPage from './pages/TeamPage';
 import CertificationPage from './pages/CertificationPage';
 import HSEPage from './pages/HSEPage';
 import CareerPage from './pages/CareerPage';
+import ClientsPage from './pages/ClientsPage';
 
 
 import { heroSlides, servicesData, contactInfo, aboutContent } from './data/websiteContent';
@@ -116,6 +117,7 @@ const App = () => {
           <Route path="/hse" element={<HSEPage />} />
           <Route path="/contactus" element={<ContactPage />} />
           <Route path="/career" element={<CareerPage />} />
+          <Route path="/client" element={<ClientsPage />} />
         </Routes>
 
   <Footer companyName=

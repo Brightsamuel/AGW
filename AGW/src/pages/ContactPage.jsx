@@ -1,6 +1,8 @@
+import React, { useRef } from 'react';
 import { Phone, Mail, Upload } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AGWLogo from '../AGW.png';
+import emailjs from '@emailjs/browser';
 
 const ContactPage = () => {
   return (
@@ -12,17 +14,85 @@ const ContactPage = () => {
               <Link to="/" className="flex justify-center w-full mb-6">
             <img src={AGWLogo} alt="Admirals Group Logo" className="h-20 w-auto mx-auto" />
               </Link>
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
+          {/* <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
             Admirals Group
-          </h1>
+          </h1> */}
           <p className="text-lg md:text-2xl opacity-90 mb-6">
-            Don’t hesitate to contact our experts with this form or by phone for any inquiries. 
+            Don’t hesitate to contact us for any special inquiries with this form. You can also contact us by phone for any inquiries. 
           </p>
         </div>
       </section>
       <section className="py-12 px-4">
         <div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-lg">
-          <form className="space-y-6">
+          {
+            /*
+              Notes:
+              - Browsers cannot include local file attachments when opening a mailto: link.
+              - To include attachments you need a server or an email service (e.g., EmailJS) that accepts file uploads from the browser and sends the email.
+              - Below: when a file is attached we attempt to send via EmailJS (client-side). You must install `@emailjs/browser` and provide SERVICE_ID, TEMPLATE_ID, USER_ID.
+              - If no file is attached we keep the mailto fallback so user's email client opens with the message prefilled.
+            */
+          }
+          <form
+            ref={useRef(null)}
+            className="space-y-6"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const form = e.target;
+              const firstName = form.firstName.value.trim();
+              const lastName = form.lastName.value.trim();
+              const email = form.email.value.trim();
+              const phone = form.phone.value.trim();
+              const description = form.description.value.trim();
+              const fileInput = form.file;
+
+              // Enforce phone including country prefix (e.g. +256 780 225 155)
+              const phonePattern = /^\+\d{1,3}\s?\d{4,14}(?:\s\d+)*$/;
+              if (!phonePattern.test(phone)) {
+                alert('Please enter a valid phone number including the country code (e.g. +256 780 225 155).');
+                return;
+              }
+
+              // Confirmation before submitting
+              const confirmSubmit = window.confirm('Are you sure you want to submit this form?');
+              if (!confirmSubmit) return;
+
+              // If a file is attached, try sending via EmailJS so attachments are preserved.
+              const hasFile = fileInput && fileInput.files && fileInput.files.length > 0;
+              if (hasFile) {
+                // TODO: Replace these with your EmailJS credentials
+                const SERVICE_ID = 'service_nvzgkxh';
+                const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+                const USER_ID = 'YOUR_USER_ID';
+
+                if (SERVICE_ID === 'YOUR_SERVICE_ID') {
+                  alert('To send attachments you must configure EmailJS (replace SERVICE_ID/TEMPLATE_ID/USER_ID in the code). Falling back to opening your email client without the attachment.');
+                } else {
+                  try {
+                    // emailjs.sendForm will include the file input if your EmailJS template is configured accordingly
+                    await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, USER_ID);
+                    alert('Message sent successfully (with attachment). Thank you!');
+                    form.reset();
+                    return;
+                  } catch (err) {
+                    console.error('EmailJS send error:', err);
+                    alert('Sending with attachment failed. Opening your email client as a fallback.');
+                  }
+                }
+              }
+
+              // Fallback: no file attached or EmailJS not configured — open mailto
+              const subject = encodeURIComponent(`Contact from ${firstName} ${lastName}`);
+              const bodyLines = [];
+              if (firstName || lastName) bodyLines.push(`Name: ${firstName} ${lastName}`);
+              if (email) bodyLines.push(`Email: ${email}`);
+              if (phone) bodyLines.push(`Phone: ${phone}`);
+              if (description) bodyLines.push(`\nDescription:\n${description}`);
+              const body = encodeURIComponent(bodyLines.join('\n'));
+              const mailto = `mailto:brightsamuel344@gmail.com?subject=${subject}&body=${body}`;
+              window.location.href = mailto;
+            }}
+          >
             <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
               <div className="w-full sm:w-1/2">
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">
@@ -30,10 +100,12 @@ const ContactPage = () => {
                 </label>
                 <input
                   id="firstName"
+                  name="firstName"
                   type="text"
                   className="w-full p-2 border rounded"
                   placeholder="First Name"
                   autoComplete="given-name"
+                  required
                 />
               </div>
               <div className="w-full sm:w-1/2">
@@ -42,10 +114,12 @@ const ContactPage = () => {
                 </label>
                 <input
                   id="lastName"
+                  name="lastName"
                   type="text"
                   className="w-full p-2 border rounded"
                   placeholder="Last Name"
                   autoComplete="family-name"
+                  required
                 />
               </div>
             </div>
@@ -55,10 +129,12 @@ const ContactPage = () => {
               </label>
               <input
                 id="email"
+                name="email"
                 type="email"
                 className="w-full p-2 border rounded"
                 placeholder="Email"
                 autoComplete="email"
+                required
               />
             </div>
             <div>
@@ -67,10 +143,14 @@ const ContactPage = () => {
               </label>
               <input
                 id="phone"
+                name="phone"
                 type="tel"
                 className="w-full p-2 border rounded"
-                placeholder="+x xxx xxx xxx"
+                placeholder="+xxx xxx xxx xxx"
                 autoComplete="tel"
+                required
+                pattern="^\+\d{1,3}\s?\d{4,14}(?:\s\d+)*$"
+                title="Include country code, e.g. +256 780 225 155"
               />
             </div>
             <div>
@@ -80,12 +160,23 @@ const ContactPage = () => {
               >
                 <Upload className="w-4 h-4 mr-2" /> Attach File
               </label>
-              <input id="file-upload" type="file" className="w-full p-2 border rounded" />
+              <input id="file-upload" name="file" type="file" className="w-full p-2 border rounded" />
+            </div>
+            <div>
+              <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                Description
+              </label>
+              <textarea
+                id="description"
+                name="description"
+                className="w-full p-2 border rounded h-32"
+                placeholder="Enter a brief description of your inquiry"
+                required
+              />
             </div>
             <button
               type="submit"
-              className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600 transition-colors font-semibold"
-            >
+              className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600 transition-colors font-semibold">
               Send
             </button>
           </form>

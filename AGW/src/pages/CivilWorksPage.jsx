@@ -131,9 +131,8 @@ const CivilWorksPage = () => {
             Get in touch to discuss how we can support your projects with reliable civil works solutions.
           </p>
           <a 
-            href="/contact" 
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
-          >
+            href="/contactus" 
+            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
             Contact Us Today
           </a>
         </div>

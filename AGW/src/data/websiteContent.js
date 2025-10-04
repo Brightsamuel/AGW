@@ -11,25 +11,25 @@ export const heroSlides = [
   },
   {
     title: "Engineering Services",
-    subtitle: "Rigorous Learning Programs",
+    subtitle: "Design, Fabrication & Project Delivery",
     description: "Innovative engineering solutions for modern infrastructure and industry.",
     bgImage: "/images/img14.png",
   },
   {
     title: "Civil Works",
-    subtitle: "Constructing a future",
+    subtitle: "Infrastructure, Roads & Bridges",
     description: "Expert construction of roads, bridges, and essential infrastructure.",
     bgImage: "/images/img13.png",
   },
   {
     title: "Oil and Gas",
-    subtitle: "High quality...",
+    subtitle: "Upstream & Downstream Support",
     description: " Our growth objective is to develop our high quality portfolio in a safe and sustainable way so that we can supply goods that help with upstream and downstream operations.",
     bgImage: "/images/img15.jpg",
   },
   {
     title: "General Supplies",
-    subtitle: "Unleash Your Potential",
+    subtitle: "Industrial & Safety Supplies",
     description: "Reliable sourcing and delivery of quality goods for every need.",
     bgImage: "/images/img1.jpeg",
   }
@@ -73,7 +73,7 @@ export const servicesData = [
     title: "Engineering Services",
     description: [
       "Tailored to Agricultural, ", "Civil & ", "Mechanical Engineering. ",
-      "*Providing:*  ",
+      "Entails  ",
       "Metal fabrication: stainless and mild steel, aluminium, structural and civil works. ",
       "Earth works, prefab structures, concrete works, and buildings. ",
       "Maintenance and repair of boilers (water tube and fire tube). ",
@@ -112,8 +112,8 @@ export const servicesData = [
       "Organisation Structure, ",
       "HSE, ",
       "Legal Documents, ",
-      "Careers."
-      
+      "Careers, ",
+      "Experience/Cliente."
     ],
     link: "/more-info", 
   },

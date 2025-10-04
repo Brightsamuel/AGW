@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { ChevronRight } from 'lucide-react';
+import React, { useEffect, useState, useRef } from "react";
+import { ChevronRight, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const images = [
-  "/images/img10.jpg",
-  "/images/img11.jpg",
   "/images/img2.jpg",
   "/images/supplies1.jpg",
   "/images/supplies2.jpg",
-  "/images/supplies3jpg",
+  "/images/supplies3.jpg",
   "/images/supplies4.jpg",
   "/images/supplies5.jpg",
   // Add more image paths as needed
@@ -17,6 +15,8 @@ const images = [
 const GeneralSuppliesPage = () => {
   const [bgIndex, setBgIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -47,6 +47,13 @@ const GeneralSuppliesPage = () => {
     "Mechanical and electrical industrial equipment.",
     "Staff support (HSE personnel)."
   ];
+
+  const handleVideoPlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsVideoPlaying(true);
+    }
+  };
 
   return (
     <div className="min-h-screen pt-20 bg-gray-50">
@@ -120,6 +127,41 @@ const GeneralSuppliesPage = () => {
         </div>
       </section>
 
+      {/* Integrated Video Showcase Section */}
+      <section className="py-16 px-4 bg-gradient-to-r from-blue-50 to-purple-50">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">One of Our Supplies' Warehouses</h2>
+          <p className="text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+            
+          </p>
+          <div className="relative bg-white rounded-lg shadow-xl overflow-hidden mx-auto max-w-4xl">
+            <video
+              ref={videoRef}
+              src="/images/supplies6.mp4"
+              className="w-full h-[400px] md:h-[500px] object-cover"
+              loop
+              muted
+              preload="metadata"
+              poster="/images/supplies-poster.jpg" // Optional poster image for initial state
+              onEnded={() => setIsVideoPlaying(false)}
+            >
+              Your browser does not support the video tag.
+            </video>
+            {!isVideoPlaying && (
+              <div 
+                className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 hover:bg-opacity-30 transition-all duration-300 cursor-pointer group"
+                onClick={handleVideoPlay}
+              >
+                <div className="bg-white bg-opacity-20 rounded-full p-4 group-hover:bg-opacity-30 transition-all duration-300">
+                  <Play className="w-12 h-12 text-white" />
+                </div>
+              </div>
+            )}
+          </div>
+          <p className="text-sm text-gray-500 mt-4">21 seconds</p>
+        </div>
+      </section>
+
       {/* CTA Section - Simple and Distinct */}
       <section className="bg-gray-800 text-white py-16 px-4 text-center">
         <div className="max-w-3xl mx-auto">
@@ -127,12 +169,12 @@ const GeneralSuppliesPage = () => {
           <p className="text-lg opacity-80 mb-8 leading-relaxed">
             Contact us to source the supplies you need for your next project.
           </p>
-          <Link 
+          {/* <Link 
             to="/contact" 
             className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             Request a Quote <ChevronRight className="w-5 h-5 ml-2 inline" />
-          </Link>
+          </Link> */}
         </div>
       </section>
     </div>
