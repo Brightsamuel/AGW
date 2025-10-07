@@ -46,21 +46,17 @@ const ContactPage = () => {
               const description = form.description.value.trim();
               const fileInput = form.file;
 
-              // Enforce phone including country prefix (e.g. +256 780 225 155)
               const phonePattern = /^\+\d{1,3}\s?\d{4,14}(?:\s\d+)*$/;
               if (!phonePattern.test(phone)) {
                 alert('Please enter a valid phone number including the country code (e.g. +256 780 225 155).');
                 return;
               }
 
-              // Confirmation before submitting
               const confirmSubmit = window.confirm('Are you sure you want to submit this form?');
               if (!confirmSubmit) return;
 
-              // If a file is attached, try sending via EmailJS so attachments are preserved.
               const hasFile = fileInput && fileInput.files && fileInput.files.length > 0;
               if (hasFile) {
-                // TODO: Replace these with your EmailJS credentials
                 const SERVICE_ID = 'service_nvzgkxh';
                 const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
                 const USER_ID = 'YOUR_USER_ID';
@@ -69,7 +65,6 @@ const ContactPage = () => {
                   alert('To send attachments you must configure EmailJS (replace SERVICE_ID/TEMPLATE_ID/USER_ID in the code). Falling back to opening your email client without the attachment.');
                 } else {
                   try {
-                    // emailjs.sendForm will include the file input if your EmailJS template is configured accordingly
                     await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, USER_ID);
                     alert('Message sent successfully (with attachment). Thank you!');
                     form.reset();
@@ -81,7 +76,6 @@ const ContactPage = () => {
                 }
               }
 
-              // Fallback: no file attached or EmailJS not configured — open mailto
               const subject = encodeURIComponent(`Contact from ${firstName} ${lastName}`);
               const bodyLines = [];
               if (firstName || lastName) bodyLines.push(`Name: ${firstName} ${lastName}`);
@@ -89,7 +83,7 @@ const ContactPage = () => {
               if (phone) bodyLines.push(`Phone: ${phone}`);
               if (description) bodyLines.push(`\nDescription:\n${description}`);
               const body = encodeURIComponent(bodyLines.join('\n'));
-              const mailto = `mailto:brightsamuel344@gmail.com?subject=${subject}&body=${body}`;
+              const mailto = `mailto:admiralsgroupcoltd@gmail.com?subject=${subject}&body=${body}`;
               window.location.href = mailto;
             }}
           >
@@ -154,15 +148,6 @@ const ContactPage = () => {
               />
             </div>
             <div>
-              <label
-                htmlFor="file-upload"
-                className="text-gray-700 text-sm font-bold mb-2 flex items-center cursor-pointer"
-              >
-                <Upload className="w-4 h-4 mr-2" /> Attach File
-              </label>
-              <input id="file-upload" name="file" type="file" className="w-full p-2 border rounded" />
-            </div>
-            <div>
               <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="description">
                 Description
               </label>
@@ -200,7 +185,6 @@ const ContactPage = () => {
             className="inline-flex items-center bg-gradient-to-r from-green-500 to-teal-500 text-white px-8 py-3 rounded-full font-semibold text-lg hover:from-green-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             Good Luck! 
-            {/* <ChevronRight className="w-5 h-5 ml-2" /> */}
           </Link>
         </div>
       </section>

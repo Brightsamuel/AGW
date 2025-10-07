@@ -21,12 +21,10 @@ const EngineeringServicesPage = () => {
       setTimeout(() => {
         setBgIndex((prev) => (prev + 1) % images.length);
         setIsTransitioning(false);
-      }, 500); // Half the transition time for smooth overlap
-    }, 5000); // Shuffle every 5 seconds
+      }, 500);
+    }, 5000); 
     return () => clearInterval(interval);
   }, []);
-
-  // Preload images to prevent loading delays
   useEffect(() => {
     images.forEach((image) => {
       const img = new Image();
@@ -77,8 +75,6 @@ const EngineeringServicesPage = () => {
           </p>
         </div>
       </section>
-
-      {/* Main Content Section - Building on Original Design */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="bg-white rounded-lg shadow-lg p-8 max-w-5xl mx-auto">
@@ -86,9 +82,7 @@ const EngineeringServicesPage = () => {
             <p className="mb-8 text-gray-700 text-center leading-relaxed">
               Admirals Group offers comprehensive engineering services across multiple disciplines, ensuring quality, innovation, and reliability in every project.
             </p>
-            
             <div className="space-y-8">
-              {/* Mechanical Engineering Section */}
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg">
                 <h3 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
                   Mechanical Engineering
@@ -105,8 +99,6 @@ const EngineeringServicesPage = () => {
                   </li>
                 </ul>
               </div>
-
-              {/* Agricultural Engineering Section */}
               <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-lg">
                 <h3 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
                   Agricultural Engineering
@@ -123,8 +115,6 @@ const EngineeringServicesPage = () => {
                   </li>
                 </ul>
               </div>
-
-              {/* Civil Engineering Section */}
               <div className="bg-gradient-to-r from-orange-50 to-amber-50 p-6 rounded-lg">
                 <h3 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
                   Civil Engineering
@@ -142,8 +132,6 @@ const EngineeringServicesPage = () => {
           </div>
         </div>
       </section>
-
-      {/* CTA Section - Simple and Distinct */}
       <section className="bg-gray-800 text-white py-16 px-4 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-4">Ready to Engineer Your Future?</h2>
@@ -151,7 +139,7 @@ const EngineeringServicesPage = () => {
             Contact us to discuss how our engineering services can support your next project.
           </p>
           <Link 
-            to="/contact" 
+            to="/contactus" 
             className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             Get in Touch <ChevronRight className="w-5 h-5 ml-2 inline" />

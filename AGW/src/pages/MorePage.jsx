@@ -2,53 +2,44 @@ import { Code, GitBranch, Laptop, Users, Award, Zap, BookOpen } from 'lucide-rea
 import { Link } from 'react-router-dom';
 
 const MorePage = () => {
-  const projects = [
-    {
-      title: "Project 0",
-      description: "project 0",
-      link: "#",
-      icon: Laptop,
-    },
-    {
-      title: "Project 1",
-      description: "project 1",
-      link: "#",
-      icon: BookOpen,
-    },
-    {
-      title: "Project 2",
-      description: "project 2",
-      link: "#",
-      icon: Zap,
-    },
-    {
-      title: "Project 3",
-      description: "project 3",
-      link: "#",
-      icon: Zap,
-    },
-  ];
+  // const projects = [
+  //   {
+  //     title: "Project 0",
+  //     description: "project 0",
+  //     link: "#",
+  //     icon: Laptop,
+  //   },
+  //   {
+  //     title: "Project 1",
+  //     description: "project 1",
+  //     link: "#",
+  //     icon: BookOpen,
+  //   },
+  //   {
+  //     title: "Project 2",
+  //     description: "project 2",
+  //     link: "#",
+  //     icon: Zap,
+  //   },
+  //   {
+  //     title: "Project 3",
+  //     description: "project 3",
+  //     link: "#",
+  //     icon: Zap,
+  //   },
+  // ];
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
       <section className="bg-gradient-to-br from-blue-700 to-indigo-900 text-white py-20 px-4 text-center">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
           <Code size={64} className="mx-auto mb-6" />
-          {/* <h1 className="text-5xl md:text-6xl font-extrabold mb-4 animate-fade-in-up">
-            
-          </h1> */}
           <p className="text-xl md:text-2xl opacity-90 mb-8">
             Igniting passion, fostering innovation, and Landmark the future to a prosperity.
           </p>
           <p className="text-lg opacity-80 max-w-2xl mx-auto">
             Meet the our expert team, a group of dedicated individuals committed to excellence in coding and technology. Our team is passionate about creating innovative solutions that make a difference in the world.
           </p>
-          {/* <Link
-            to="/contactus"
-            className="mt-8 bg-white text-indigo-700 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
-          >
-            Reach out to us!
-          </Link> */}
         </div>
       </section>
 
@@ -83,7 +74,6 @@ const MorePage = () => {
                 Stay updated with the latest tech trends and develop skills for future careers in tech.
               </p>
             </div>
-            {/* Career Tab */}
             <div className="bg-white p-10 md:p-12 rounded-2xl shadow-md text-center hover:shadow-xl transition-shadow duration-300">
               <Laptop size={64} className="text-green-600 mx-auto mb-6" />
               <h3 className="text-3xl md:text-3xl font-bold text-gray-800 mb-4">
@@ -93,7 +83,6 @@ const MorePage = () => {
                 Explore exciting career opportunities and join our dynamic team to make a difference.
               </p>
             </div>
-            {/* Experience / Clients Tab */}
             <div className="bg-white p-10 md:p-12 rounded-2xl shadow-md text-center hover:shadow-xl transition-shadow duration-300">
               <Users size={64} className="text-teal-600 mx-auto mb-6" />
               <h3 className="text-3xl md:text-3xl font-bold text-gray-800 mb-4">
@@ -134,7 +123,7 @@ const MorePage = () => {
             Reach out to our team for any inquiries or to learn more about our services and projects.
           </p>
           <Link to="/contactus" className="bg-gradient-to-r from-green-500 to-teal-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-green-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
-            Contact Us
+            Contact Us Today
           </Link>
         </div>
       </section>

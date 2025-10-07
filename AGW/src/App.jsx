@@ -32,9 +32,9 @@ const App = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY && window.scrollY > 50) {
-        setShowNavbar(false); // Hide navbar when scrolling down
+        setShowNavbar(false);
       } else {
-        setShowNavbar(true); // Show navbar when scrolling up
+        setShowNavbar(true); 
       }
       setLastScrollY(window.scrollY);
     };
@@ -48,8 +48,8 @@ const App = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
     setIsMenuOpen(false);
-    setShowNavbar(false); // Hide navbar when a service is clicked
-    setTimeout(() => setShowNavbar(true), 800); // Show navbar again after 0.8s
+    setShowNavbar(false); 
+    setTimeout(() => setShowNavbar(true), 800); 
   };
 
   return (

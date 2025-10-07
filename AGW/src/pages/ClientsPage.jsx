@@ -83,12 +83,6 @@ const ClientsPage = () => {
           <p className="text-xl opacity-80 mb-8">
             Patnering With Admirals Group
           </p>
-          {/* <Link
-            to="/contact"
-            className="bg-gradient-to-r from-green-500 to-teal-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-green-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
-          >
-            Become a Partner <ChevronRight className="w-5 h-5 ml-2 inline" />
-          </Link> */}
         </div>
       </section>
     </div>

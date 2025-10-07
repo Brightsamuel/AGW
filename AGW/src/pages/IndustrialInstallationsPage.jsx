@@ -3,9 +3,9 @@ import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const images = [
-  "/images/img7.jpeg",
   "/images/ii1.jpg",
   "/images/ii2.jpg",
+  "/images/ii3.png",
   // Add more image paths as needed
 ];
 
@@ -19,12 +19,11 @@ const IndustrialInstallationsPage = () => {
       setTimeout(() => {
         setBgIndex((prev) => (prev + 1) % images.length);
         setIsTransitioning(false);
-      }, 500); // Half the transition time for smooth overlap
-    }, 5000); // Shuffle every 5 seconds
+      }, 500); 
+    }, 5000); 
     return () => clearInterval(interval);
   }, []);
 
-  // Preload images to prevent loading delays
   useEffect(() => {
     images.forEach((image) => {
       const img = new Image();
@@ -140,7 +139,7 @@ const IndustrialInstallationsPage = () => {
             Contact us to discuss your industrial installation needs and get a customized proposal.
           </p>
           <Link 
-            to="/contact" 
+            to="/contactus" 
             className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             Request Installation <ChevronRight className="w-5 h-5 ml-2 inline" />

@@ -25,11 +25,10 @@ const GeneralSuppliesPage = () => {
         setBgIndex((prev) => (prev + 1) % images.length);
         setIsTransitioning(false);
       }, 500); // Half the transition time for smooth overlap
-    }, 5000); // Shuffle every 5 seconds
+    }, 5000); 
     return () => clearInterval(interval);
   }, []);
 
-  // Preload images to prevent loading delays
   useEffect(() => {
     images.forEach((image) => {
       const img = new Image();
@@ -142,7 +141,7 @@ const GeneralSuppliesPage = () => {
               loop
               muted
               preload="metadata"
-              poster="/images/supplies-poster.jpg" // Optional poster image for initial state
+              poster="/images/supplies-poster.jpg" 
               onEnded={() => setIsVideoPlaying(false)}
             >
               Your browser does not support the video tag.
@@ -158,7 +157,6 @@ const GeneralSuppliesPage = () => {
               </div>
             )}
           </div>
-          {/* <p className="text-sm text-gray-500 mt-4">21 seconds</p> */}
         </div>
       </section>
 
@@ -169,12 +167,6 @@ const GeneralSuppliesPage = () => {
           <p className="text-lg opacity-80 mb-8 leading-relaxed">
             Contact us to source the supplies you need for your next project.
           </p>
-          {/* <Link 
-            to="/contact" 
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
-          >
-            Request a Quote <ChevronRight className="w-5 h-5 ml-2 inline" />
-          </Link> */}
         </div>
       </section>
     </div>
