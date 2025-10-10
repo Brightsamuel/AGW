@@ -1,4 +1,4 @@
-import { Users, Hammer, Factory, Settings, Package, Flame,  ChevronRight, MoreHorizontal } from 'lucide-react'; // Import all possible icons
+import { Users, Hammer, Factory, Settings, HardHat, Package, Flame,  ChevronRight, MoreHorizontal } from 'lucide-react'; // Import all possible icons
 import { Link } from 'react-router-dom'; 
 
 // Map icon names to actual Lucide components
@@ -9,7 +9,10 @@ const IconMap = {
   Hammer: Hammer,
   Flame: Flame,
   Settings: Settings,
-  MoreHorizontal: MoreHorizontal
+  HardHat: HardHat,
+  MoreHorizontal: MoreHorizontal,
+  // fallback mapping
+  Default: Users,
   // Add other icons as needed
 };
 

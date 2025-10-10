@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import HeroSection from './components/HeroSection';
 import AGWLogo from './AGW.png';
-import AboutSection from './components/AboutSection'; 
+// import AboutSection from './components/AboutSection'; 
 import AboutUsPage from './pages/AboutUsPage'; 
 import ServicesSection from './components/ServicesSection';
 import ContactPage from './pages/ContactPage';
@@ -11,7 +11,10 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import MorePage from './pages/MorePage';
 import CivilWorksPage from './pages/CivilWorksPage';
-import EngineeringServicesPage from './pages/EngineeringServicesPage';
+// import EngineeringServicesPage from './pages/EngineeringServicesPage';
+import CivilEngPage from './pages/CivilEngPage';
+import AgriculturalEngPage from './pages/AgriculturalEngPage';
+import MechanicalEngPage from './pages/MechanicalEngPage';
 import IndustrialInstallationsPage from './pages/IndustrialInstallationsPage';
 import OilAndGasPage from './pages/OilAndGasPage';
 import GeneralSuppliesPage from './pages/GeneralSuppliesPage';
@@ -19,10 +22,11 @@ import TeamPage from './pages/TeamPage';
 import CertificationPage from './pages/CertificationPage';
 import HSEPage from './pages/HSEPage';
 import CareerPage from './pages/CareerPage';
-import ClientsPage from './pages/ClientsPage';
+// import ClientsPage from './pages/ClientsPage';
+import ClientsSection from './components/ClientsSection';
 
 
-import { heroSlides, servicesData, contactInfo, aboutContent } from './data/websiteContent';
+import { heroSlides, servicesData, contactInfo, aboutContent, clientsData } from './data/websiteContent';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,7 +63,7 @@ const App = () => {
           <div className="px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <Link to="/" className="flex items-center space-x-2">
-                <img src={AGWLogo} alt="Admirals Group Logo" className="h-12 w-auto" />
+                <img src={AGWLogo} alt="Admirals Group Logo" className="h-16 w-auto" />
               </Link>
 
               <div className="hidden md:flex space-x-8">
@@ -100,7 +104,8 @@ const App = () => {
           <Route path="/" element={
             <>
               <HeroSection slides={heroSlides} />
-              <AboutSection content={aboutContent} />
+              <ClientsSection clients={clientsData} />
+              {/* <AboutSection content={aboutContent} /> */}
               <ServicesSection services={servicesData} />
               <ContactSection contactInfo={contactInfo} />
             </>
@@ -108,8 +113,11 @@ const App = () => {
           <Route path="/about-us" element={<AboutUsPage />} />
           <Route path="/more-info" element={<MorePage />} />
           <Route path="/civil-works" element={<CivilWorksPage />} />
-          <Route path="/engineering-services" element={<EngineeringServicesPage />} />
+          {/* <Route path="/engineering-services" element={<EngineeringServicesPage />} /> */}
           <Route path="/industrial-installations" element={<IndustrialInstallationsPage />} />
+          <Route path="/agriculture" element={<AgriculturalEngPage />} />
+          <Route path="/civil" element={<CivilEngPage />} />
+          <Route path="/mechanical" element={<MechanicalEngPage />} />
           <Route path="/oil-and-gas" element={<OilAndGasPage />} />
           <Route path="/general-supplies" element={<GeneralSuppliesPage />} />
           <Route path="/team" element={<TeamPage />} />
@@ -117,7 +125,7 @@ const App = () => {
           <Route path="/hse" element={<HSEPage />} />
           <Route path="/contactus" element={<ContactPage />} />
           <Route path="/career" element={<CareerPage />} />
-          <Route path="/client" element={<ClientsPage />} />
+          {/* <Route path="/client" element={<ClientsPage />} /> */}
         </Routes>
 
   <Footer companyName=

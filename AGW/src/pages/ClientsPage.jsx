@@ -1,3 +1,4 @@
+// Updated ClientsPage.jsx (simplified to keep the full page functional, but core content moved; adjust as needed)
 import React, { useEffect, useState } from 'react';
 import { Users, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -11,6 +12,22 @@ const clientImages = [
   '/images/client6.png',
   '/images/client7.png',
   '/images/client8.png',
+  '/images/client9.png',
+  '/images/client10.png',
+];
+
+// Partner links for client logos (null = no link)
+const partnerLinks = [
+  'https://www.unhcr.org/',
+  'https://www.mantracgroup.com/en-ug/',
+  'https://markhinvestments.com/',
+  'https://www.mota-engil.com/en/',
+  'https://www.ccbagroup.com/where-we-operate/uganda/',
+  'https://www.deibiopharma.com/',
+  'https://www.yarid.net/',
+  'https://airdinternational.org/',
+  null,
+  null,
 ];
 
 const ClientsPage = () => {
@@ -65,12 +82,23 @@ const ClientsPage = () => {
                   animationDelay: `${index * 0.3}s`,
                 }}
               >
-                <img
-                  src={image}
-                  alt={`Client ${index + 1}`}
-                  className="w-36 h-36 object-contain rounded-lg transition-transform duration-500 hover:scale-110"
-                  onLoad={() => setVisibleIndices(prev => [...prev, index])} // Fallback for late loads
-                />
+                {partnerLinks[index] ? (
+                  <a href={partnerLinks[index]} target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={image}
+                      alt={`Client ${index + 1}`}
+                      className="w-36 h-36 object-contain rounded-lg transition-transform duration-500 hover:scale-110"
+                      onLoad={() => setVisibleIndices(prev => [...prev, index])}
+                    />
+                  </a>
+                ) : (
+                  <img
+                    src={image}
+                    alt={`Client ${index + 1}`}
+                    className="w-36 h-36 object-contain rounded-lg transition-transform duration-500 hover:scale-110"
+                    onLoad={() => setVisibleIndices(prev => [...prev, index])} // Fallback for late loads
+                  />
+                )}
               </div>
             ))}
           </div>

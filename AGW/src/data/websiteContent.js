@@ -13,7 +13,7 @@ export const heroSlides = [
     title: "Engineering Services",
     subtitle: "Design, Fabrication & Project Delivery",
     description: "Innovative engineering solutions for modern infrastructure and industry.",
-    bgImage: "/images/img14.png",
+    bgImage: "/images/img7.png",
   },
   {
     title: "Civil Works",
@@ -49,6 +49,14 @@ export const aboutContent = {
 
 export const servicesData = [
   {
+    icon: "HardHat", 
+    title: "Engineering Services",
+    description: [
+      "Explore;"
+    ],
+    link: "#",
+  },
+  {
     icon: "Hammer", 
     title: "Civil Works",
     description: [
@@ -67,20 +75,6 @@ export const servicesData = [
       "Installation of power factor improvement equipment (capacitor banks). "
     ],
     link: "/industrial-installations",
-  },
-  {
-    icon: "Settings", 
-    title: "Engineering Services",
-    description: [
-      "Tailored to Agricultural, ", "Civil & ", "Mechanical Engineering. ",
-      "Entails  ",
-      "Metal fabrication: stainless and mild steel, aluminium, structural and civil works. ",
-      "Earth works, prefab structures, concrete works, and buildings. ",
-      "Maintenance and repair of boilers (water tube and fire tube). ",
-      "Project management and consultation. ",
-      "Product design, process improvement, and optimization. "
-    ],
-    link: "/engineering-services",
   },
   {
     icon: "Flame", 
@@ -112,8 +106,7 @@ export const servicesData = [
       "Organisation Structure, ",
       "HSE, ",
       "Legal Documents, ",
-      "Careers, ",
-      "Experience/Cliente."
+      "Careers."
     ],
     link: "/more-info", 
   },
@@ -125,7 +118,7 @@ export const contactInfo = {
     address2: "Nakivubo Lane, Kampala Central (U)",
   },
   phone: [
-    "+256 780 225 155",
+    "0200 969 992",
   ],
   email: [
     "admiralsgroupcoltd@gmail.com",
@@ -133,4 +126,31 @@ export const contactInfo = {
   socialMedia: [ 
     "wwww.admiralgrouplimited.com",
   ]
+};
+
+export const clientsData = {
+  images: [
+    '/images/client1.png',
+    '/images/client2.png',
+    '/images/client3.png',
+    '/images/client4.png',
+    '/images/client5.png',
+    '/images/client6.png',
+    '/images/client7.png',
+    '/images/client8.png',
+    '/images/client9.png',
+    '/images/client10.png',
+  ],
+  links: [
+    'https://www.unhcr.org/',
+    'https://www.mantracgroup.com/en-ug/',
+    'https://markhinvestments.com/',
+    'https://www.mota-engil.com/en/',
+    'https://www.ccbagroup.com/where-we-operate/uganda/',
+    'https://www.deibiopharma.com/',
+    'https://www.yarid.net/',
+    'https://airdinternational.org/',
+    null,
+    null,
+  ],
 };

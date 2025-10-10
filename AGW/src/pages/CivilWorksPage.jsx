@@ -2,16 +2,69 @@ import React, { useEffect, useState, useRef } from "react";
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+const useInView = (threshold = 0.1) => {
+  const ref = useRef(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect(); // Trigger once
+        }
+      },
+      { threshold }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return [ref, isInView];
+};
+
+const AnimatedText = ({ text, className = "text-gray-700 leading-relaxed" }) => {
+  const [textRef, isTextInView] = useInView(0.2);
+  const words = text.split(' ');
+
+  return (
+    <div ref={textRef} className={className}>
+      {words.map((word, index) => (
+        <span
+          key={index}
+          className={`inline-block opacity-0 translate-y-4 transition-all duration-300 ease-out ${isTextInView ? 'opacity-100 translate-y-0' : ''}`}
+          style={{ transitionDelay: `${index * 0.05}s` }}
+        >
+          {word}&nbsp;
+        </span>
+      ))}
+    </div>
+  );
+};
+
+const AnimatedCard = ({ children, delay = 0 }) => {
+  const [cardRef, isCardInView] = useInView(0.1);
+
+  return (
+    <div 
+      ref={cardRef}
+      className={`transition-all duration-700 ease-out ${isCardInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} 
+      style={{ transitionDelay: `${delay}s` }}
+    >
+      <div className="h-full">
+        {children}
+      </div>
+    </div>
+  );
+};
+
 const images = [
-  "/images/civil1.jpg",
-  "/images/civil2.jpg",
-  "/images/civil3.jpg",
-  "/images/civil4.jpg",
-  "/images/civil5.jpg",
-  "/images/civil6.jpg",
-  "/images/civil7.jpg",
-  "/images/civil8.jpg",
-  "/images/civil9.jpg",
+  "/images/civilw1.jpg",
+  "/images/civilw2.jpg",
   // Note: civil10.jpg is used as poster for the video
   // Add more image paths as needed
 ];
@@ -19,7 +72,9 @@ const images = [
 const CivilWorksPage = () => {
   const [bgIndex, setBgIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const videoRef = useRef(null);
+  const [heroRef, isHeroInView] = useInView(0.0); // Trigger immediately for hero
+  const [mainRef, isMainInView] = useInView(0.1);
+  const [ctaRef, isCtaInView] = useInView(0.1);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -43,7 +98,7 @@ const CivilWorksPage = () => {
   return (
     <div className="min-h-screen pt-20 bg-gray-50">
       {/* Hero Section with Shuffling Background */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" ref={heroRef}>
         <div className="absolute inset-0">
           {images.map((image, index) => {
             const isCurrent = index === bgIndex;
@@ -73,90 +128,71 @@ const CivilWorksPage = () => {
           })}
         </div>
 
-        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto animate-fade-in">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Civil Works Excellence</h1>
-          <p className="text-lg md:text-xl opacity-90 mb-6 leading-relaxed drop-shadow-md">
+        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+          <h1 className={`text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg transition-all duration-700 ease-out ${isHeroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            Civil Works Excellence
+          </h1>
+          <p className={`text-lg md:text-xl opacity-90 mb-6 leading-relaxed drop-shadow-md transition-all duration-700 ease-out ${isHeroInView ? 'opacity-100 translate-y-0 delay-200' : 'opacity-0 translate-y-4'}`}>
             Comprehensive solutions for heavy machinery, vehicle maintenance, and industrial installations.
           </p>
-          <p className="text-base opacity-80 max-w-2xl mx-auto drop-shadow-sm">
+          <p className={`text-base opacity-80 max-w-2xl mx-auto drop-shadow-sm transition-all duration-700 ease-out delay-400 ${isHeroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             From sales and repairs to specialized installations, we keep your operations running smoothly.
           </p>
         </div>
       </section>
 
       {/* Main Content Section - Building on Original Design */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4" ref={mainRef}>
         <div className="max-w-7xl mx-auto">
-          <div className="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
+          <div className={`bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto transition-all duration-700 ease-out ${isMainInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Our Civil Works Services</h2>
-            <p className="mb-8 text-gray-700 text-center leading-relaxed">
-              Admirals Group delivers expert civil works solutions tailored for construction, transportation, and industrial needs. With a focus on quality and reliability, we support Uganda's infrastructure development through skilled maintenance and innovative installations.
-            </p>
+            <AnimatedText text="Admirals Group delivers expert civil works solutions tailored for construction, transportation, and industrial needs. With a focus on quality and reliability, we support Uganda's infrastructure development through skilled maintenance and innovative installations." className="mb-8 text-gray-700 text-center leading-relaxed" />
             
             <ul className="space-y-6 text-gray-700">
-              <li className="flex items-start space-x-4 border-l-4 border-blue-500 pl-4 py-3 bg-blue-50 rounded-r-lg">
-                <div className="flex-shrink-0 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mt-1">
-                  <span className="text-white text-sm font-bold">1</span>
-                </div>
-                <div>
-                  <strong className="font-semibold text-gray-800 block mb-1">Heavy Machinery Services</strong>
-                  <p className="text-sm leading-relaxed">Sales, hire, repairs, and spare parts for excavators, backhoes, dozers, and heavy trucks. We ensure your equipment is always operational for demanding projects.</p>
-                </div>
-              </li>
-              <li className="flex items-start space-x-4 border-l-4 border-green-500 pl-4 py-3 bg-green-50 rounded-r-lg">
-                <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
-                  <span className="text-white text-sm font-bold">2</span>
-                </div>
-                <div>
-                  <strong className="font-semibold text-gray-800 block mb-1">Light Vehicle Maintenance</strong>
-                  <p className="text-sm leading-relaxed">Repairs and spare parts for all light vehicles (Toyota, Hyundai, Volvo, Benz, etc.). Comprehensive support to keep your fleet road-ready and efficient.</p>
-                </div>
-              </li>
-              <li className="flex items-start space-x-4 border-l-4 border-purple-500 pl-4 py-3 bg-purple-50 rounded-r-lg">
-                <div className="flex-shrink-0 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center mt-1">
-                  <span className="text-white text-sm font-bold">3</span>
-                </div>
-                <div>
-                  <strong className="font-semibold text-gray-800 block mb-1">Industrial Installations</strong>
-                  <p className="text-sm leading-relaxed">Professional installation services for industrial systems, ensuring seamless integration and optimal performance for your operations.</p>
-                </div>
-              </li>
+              <AnimatedCard delay={0.2}>
+                <li className="flex items-start space-x-4 border-l-4 border-blue-500 pl-4 py-3 bg-blue-50 rounded-r-lg">
+                  <div className="flex-shrink-0 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mt-1">
+                    <span className="text-white text-sm font-bold">1</span>
+                  </div>
+                  <div>
+                    <strong className="font-semibold text-gray-800 block mb-1">Heavy Machinery Services</strong>
+                    <AnimatedText text="Sales, hire, repairs, and spare parts for excavators, backhoes, dozers, and heavy trucks. We ensure your equipment is always operational for demanding projects." className="text-sm leading-relaxed" />
+                  </div>
+                </li>
+              </AnimatedCard>
+              <AnimatedCard delay={0.4}>
+                <li className="flex items-start space-x-4 border-l-4 border-green-500 pl-4 py-3 bg-green-50 rounded-r-lg">
+                  <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
+                    <span className="text-white text-sm font-bold">2</span>
+                  </div>
+                  <div>
+                    <strong className="font-semibold text-gray-800 block mb-1">Light Vehicle Maintenance</strong>
+                    <AnimatedText text="Repairs and spare parts for all light vehicles (Toyota, Hyundai, Volvo, Benz, etc.). Comprehensive support to keep your fleet road-ready and efficient." className="text-sm leading-relaxed" />
+                  </div>
+                </li>
+              </AnimatedCard>
+              <AnimatedCard delay={0.6}>
+                <li className="flex items-start space-x-4 border-l-4 border-purple-500 pl-4 py-3 bg-purple-50 rounded-r-lg">
+                  <div className="flex-shrink-0 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center mt-1">
+                    <span className="text-white text-sm font-bold">3</span>
+                  </div>
+                  <div>
+                    <strong className="font-semibold text-gray-800 block mb-1">Industrial Installations</strong>
+                    <AnimatedText text="Professional installation services for industrial systems, ensuring seamless integration and optimal performance for your operations." className="text-sm leading-relaxed" />
+                  </div>
+                </li>
+              </AnimatedCard>
             </ul>
           </div>
         </div>
       </section>
 
-      {/* Integrated Video Showcase Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-blue-50 to-purple-50">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* <h2 className="text-3xl font-bold text-gray-800 mb-6">Civil Works in Action</h2> */}
-          <p className="text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
-            {/* Experience our civil works projects through this dynamic showcase video, highlighting our team's expertise and commitment to excellence. */}
-          </p>
-          <div className="relative bg-white rounded-lg shadow-xl overflow-hidden mx-auto max-w-4xl">
-            <video
-              ref={videoRef}
-              src="/images/civil10.mp4"
-              className="w-full h-[400px] md:h-[500px] object-cover"
-              loop
-              muted
-              autoPlay
-              preload="metadata"
-              playsInline
-              onEnded={() => {
-                // Optional: Restart or pause after loop
-              }}>
-            </video>
-          </div>
-        </div>
-      </section>
+      {/* Video section removed per request */}
 
-      <section className="bg-gray-800 text-white py-16 px-4 text-center">
-        <div className="max-w-3xl mx-auto">
+      <section className="bg-gray-800 text-white py-16 px-4 text-center" ref={ctaRef}>
+        <div className={`max-w-3xl mx-auto transition-all duration-700 ease-out ${isCtaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-3xl font-bold mb-4">Partner with Us for Your Civil Works Needs</h2>
-          <p className="text-lg opacity-80 mb-8 leading-relaxed">
-            Get in touch to discuss how we can support your projects with reliable civil works solutions.
-          </p>
+          <AnimatedText text="Get in touch to discuss how we can support your projects with reliable civil works solutions." className="text-lg opacity-80 mb-8 leading-relaxed" />
           <Link 
             to="/contactus" 
             className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"

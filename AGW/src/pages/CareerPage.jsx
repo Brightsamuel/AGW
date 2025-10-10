@@ -9,17 +9,34 @@ const jobOpenings = [
   {
     title: "Diploma Vehicle Mechanic",
     positions: 2,
-    description: "We are hiring 2 Diploma Vehicle Mechanics to join our team. Responsibilities include vehicle repairs, maintenance, and supporting engineering projects.",
+    description: "Seeking experienced Diploma Vehicle Mechanics with 2+ years in heavy machinery maintenance. Responsibilities include diagnostics, repairs, preventive maintenance of tractors and agricultural equipment, welding, and fabrication support. Must have strong problem-solving skills and ability to work independently on-site.",
     applyLink: GOOGLE_FORM_URL,
   },
   {
     title: "CPA Certified Accountant",
     positions: 1,
-    description: "We are hiring a CPA Certified Accountant to manage financial operations, ensuring compliance and efficiency in our growing organization.",
+    description: "Looking for a CPA-certified accountant with 3+ years experience in financial reporting, tax compliance, and budgeting. Responsibilities include managing accounts payable/receivable, preparing financial statements, conducting audits, and ensuring regulatory compliance. Proficiency in accounting software and strong analytical skills required.",
+    applyLink: GOOGLE_FORM_URL,
+  },
+  {
+    title: "Construction Engineer",
+    positions: 1,
+    description: "Seeking a qualified Construction Engineer with a Bachelor's degree and 2+ years experience in building construction and civil works. Responsibilities include supervising construction sites, coordinating with contractors, ensuring quality standards, managing concrete works, basement construction, and overseeing painting and demolition projects. Knowledge of AutoCAD and construction management software essential.",
+    applyLink: GOOGLE_FORM_URL,
+  },
+  {
+    title: "Drilling Engineer",
+    positions: 1,
+    description: "Hiring experienced Drilling Engineers with technical certification and 2+ years in borehole drilling and water well installation. Responsibilities include operating drilling equipment, conducting site assessments, installing irrigation systems, maintaining drilling machinery, reading geological surveys, and ensuring safety compliance. Experience with water pumps and irrigation engineering preferred.",
+    applyLink: GOOGLE_FORM_URL,
+  },
+  {
+    title: "Excavator Operator",
+    positions: 1,
+    description: "Looking for skilled Excavator Operators with valid operator's license and 1+ year operating heavy excavation machinery. Responsibilities include earth moving, site preparation, trenching for foundations, operating bulldozers and excavators, performing routine equipment inspections, and supporting construction and agricultural projects. Strong safety awareness and ability to read site plans required.",
     applyLink: GOOGLE_FORM_URL,
   },
 ];
-
 const CareerPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalLink, setModalLink] = useState('');
