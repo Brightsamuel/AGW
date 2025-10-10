@@ -255,24 +255,24 @@ const MechanicalEngPage = () => {
         </div>
       </section>
 
-      {/* Video Showcase Section */}
+       {/* Video Showcase Section */}
       <section className="py-24 px-4 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">See Our Work in Action</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">An Overview</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
           </div>
           
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-200">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-200 mx-auto max-w-3xl">
             <video
               autoPlay
               loop
               muted
               playsInline
               className="w-full h-auto"
-              style={{ minHeight: '400px', maxHeight: '700px', objectFit: 'contain' }}
+              style={{ maxHeight: '500px', objectFit: 'cover' }}
             >
-              <source src="/images/mechanicalengineering/mechanical.mp4" type="video/mp4" />
+              <source src="/images/mechanicalengineering/mechanical4.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>

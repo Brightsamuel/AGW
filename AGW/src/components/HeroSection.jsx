@@ -49,9 +49,9 @@ const HeroSection = ({ slides }) => {
           {slides[currentSlide].description}
         </p>
         <button
-          onClick={() => scrollToSection('about')}
+          onClick={() => scrollToSection('services')}
           className="bg-white text-gray-800 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
-          aria-label="Discover more about Elite High School"
+          aria-label="Discover more about Admirals Group"
         >
           Discover More
         </button>
