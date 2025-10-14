@@ -141,7 +141,6 @@ const OilAndGasPage = () => {
         </div>
       </section>
 
-      {/* Main Content Section - Building on Original Design */}
       <section className="py-20 px-4" ref={mainRef}>
         <div className="max-w-7xl mx-auto">
           <div className={`bg-white rounded-lg shadow-lg p-8 max-w-5xl mx-auto transition-all duration-700 ease-out ${isMainInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

@@ -71,7 +71,8 @@ const AboutUsPage = () => {
     "Admirals Group is a trusted, award-winning leader in Engineering Services and Technology in East Africa .",
     "For several years, we've established a reputation for innovative and efficient engineering capabilities across our core fields: Automotive, Mechanical, Civil, Mining, Manufacturing, and Agriculture. We are your comprehensive partner for technical excellence.",
     "URSB No. 80034478937723.",
-    "Located at Original Shauriyako Plaza, Kampala (U)"
+    "Address: P.O.Box 152099, Kampala Uganda",
+    "Original Shauriyako Plaza, Nakivubo Lane. Kampala Business District."
   ];
 
   const coreValues = [

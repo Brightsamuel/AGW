@@ -63,7 +63,7 @@ const MorePage = () => {
     {
       title: "Certification",
       description: "View our professional certifications, accreditations, and industry recognitions validating our expertise.",
-      link: "/certification",
+      link: "#",
       icon: Award,
       gradient: "from-orange-500 to-red-600",
       hoverGradient: "hover:from-orange-600 hover:to-red-700"

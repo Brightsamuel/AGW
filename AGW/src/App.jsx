@@ -61,9 +61,9 @@ const App = () => {
       <div className="min-h-screen bg-gray-50">
         <nav className={`fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-50 transition-transform duration-300 ${showNavbar ? 'translate-y-0' : '-translate-y-full'}`}>
           <div className="px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <Link to="/" className="flex items-center space-x-2">
-                <img src={AGWLogo} alt="Admirals Group Logo" className="h-16 w-auto" />
+            <div className="flex justify-between items-center h-20">
+              <Link to="/" className="flex items-center space-x-2 py-2">
+                <img src={AGWLogo} alt="Admirals Group Logo" className="h-20 w-auto object-contain" />
               </Link>
 
               <div className="hidden md:flex space-x-8">
@@ -113,7 +113,6 @@ const App = () => {
           <Route path="/about-us" element={<AboutUsPage />} />
           <Route path="/more-info" element={<MorePage />} />
           <Route path="/civil-works" element={<CivilWorksPage />} />
-          {/* <Route path="/engineering-services" element={<EngineeringServicesPage />} /> */}
           <Route path="/industrial-installations" element={<IndustrialInstallationsPage />} />
           <Route path="/agriculture" element={<AgriculturalEngPage />} />
           <Route path="/civil" element={<CivilEngPage />} />
@@ -128,10 +127,7 @@ const App = () => {
           {/* <Route path="/client" element={<ClientsPage />} /> */}
         </Routes>
 
-  <Footer companyName=
-  "Admirals Group"
-  // {<img src={AGWLogo} alt="Admirals Group Logo" className="h-8 w-auto inline" />} 
-  />
+  <Footer companyName="Admirals Group" />
       </div>
     </Router>
   );

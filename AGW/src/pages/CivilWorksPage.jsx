@@ -65,6 +65,11 @@ const AnimatedCard = ({ children, delay = 0 }) => {
 const images = [
   "/images/civilw1.jpg",
   "/images/civilw2.jpg",
+  "/images/civilw3.jpg",
+  "/images/civilw4.jpg",
+  "/images/civilw5.jpg",
+  "/images/civilw6.jpg",
+  "/images/civilw7.jpg",
   // Note: civil10.jpg is used as poster for the video
   // Add more image paths as needed
 ];
@@ -141,7 +146,6 @@ const CivilWorksPage = () => {
         </div>
       </section>
 
-      {/* Main Content Section - Building on Original Design */}
       <section className="py-20 px-4" ref={mainRef}>
         <div className="max-w-7xl mx-auto">
           <div className={`bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto transition-all duration-700 ease-out ${isMainInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

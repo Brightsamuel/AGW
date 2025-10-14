@@ -3,9 +3,6 @@ export const heroSlides = [
     title: "Admirals Group",
     subtitle: "Engineering Tomorrow, Building Today",
     description: "Offering quality services to our customers",
-    // Use actual image URLs here. You'd put these in your public/images folder or host them.
-    // Example: '/images/school_front.jpg' (if image is in public/images)
-    // Or external URLs: 'https://source.unsplash.com/random/1920x1080/?school-campus'
     bgImage: "/images/img12.png",
     // You can keep bg: "from-blue-600 via-purple-600 to-indigo-800" if you want a fallback or overlay
   },
@@ -114,8 +111,9 @@ export const servicesData = [
 
 export const contactInfo = {
   location: {
-    address1: "Original Shauriyako Plaza",
-    address2: "Nakivubo Lane, Kampala Central (U)",
+    address1: "Address: P.O.Box 152099, Kampala Uganda",
+    address2: "Original Shauriyako Plaza, Nakivubi Lane,",
+    address3: "Kampala Business District",
   },
   phone: [
     "0200 969 992",

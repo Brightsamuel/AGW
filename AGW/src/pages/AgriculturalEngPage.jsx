@@ -3,12 +3,16 @@ import { Leaf, Tractor, Droplets, CheckCircle, ArrowRight, Users, Trophy, Target
 import { Link } from 'react-router-dom';
 
 const images = [
-  "/images/agriculturalengineering/agricultural1.jpg",
-  "/images/agriculturalengineering/agricultural2.jpg",
-  "/images/agriculturalengineering/agricultural3.jpg",
-  "/images/agriculturalengineering/agricultural4.jpg",
-  "/images/agriculturalengineering/agricultural5.jpg",
-  "/images/agriculturalengineering/agricultural6.jpg",
+  "/images/agriculturalengineering/trac1.jpg",
+  "/images/agriculturalengineering/trac2.jpg",
+  "/images/agriculturalengineering/trac3.jpg",
+  "/images/agriculturalengineering/trac4.jpg",
+  "/images/agriculturalengineering/irrigate1.jpg",
+  "/images/agriculturalengineering/irrigate2.jpg",
+  "/images/agriculturalengineering/irrigate3.jpg",
+  "/images/agriculturalengineering/irrigate4.jpg",
+  "/images/agriculturalengineering/irrigate5.jpg",
+  "/images/agriculturalengineering/irrigate6.jpg",
 ];
 
 const useInView = (threshold = 0.1) => {
