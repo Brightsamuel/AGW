@@ -229,8 +229,10 @@ const AgriculturalEngPage = () => {
                 `}
                 style={{
                   backgroundImage: `url(${image})`,
-                  backgroundSize: 'cover',
+                  backgroundSize: 'contain',
                   backgroundPosition: 'center',
+                  // backgroundRepeat: 'no-repeat',
+                  // backgroundColor: '#FFFDFD00',
                   zIndex: isCurrent ? 2 : isNext || isPrevious ? 1 : 0,
                 }}
               >
