@@ -118,7 +118,7 @@ const benefits = [
   {
     icon: DollarSign,
     title: "Competitive Salary",
-    description: "Market-leading compensation packages with performance bonuses"
+    description: "Fair and Competitive Pay that is Market-Driven and rewarding"
   },
   {
     icon: TrendingUp,

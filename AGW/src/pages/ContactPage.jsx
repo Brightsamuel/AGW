@@ -46,11 +46,25 @@ const ContactCard = ({ icon: Icon, title, content, link, index }) => {
           <Icon className="w-7 h-7 text-white" />
         </div>
         <h3 className="text-lg font-bold text-gray-800 mb-2 text-center">{title}</h3>
-        {link ? (
+        {Array.isArray(content) && Array.isArray(link) ? (
+          // Case 1: Multiple links (Phone Numbers)
+          // Ensure map includes 'item' (the content) and 'i' (the index)
+        content.map((item, i) => ( 
+            <a 
+              key={i} 
+              href={link[i]} 
+              className="text-blue-600 hover:text-blue-800 text-center block transition-colors text-sm"
+            >
+              {item}
+            </a>
+          ))
+        ) : link ? (
+          // Case 2: Single link (Email/Location)
           <a href={link} className="text-blue-600 hover:text-blue-800 text-center block transition-colors">
             {content}
           </a>
         ) : (
+          // Case 3: No link (Business Hours)
           <p className="text-gray-600 text-center text-sm">{content}</p>
         )}
       </div>
@@ -75,7 +89,7 @@ const ContactPage = () => {
 
     const phonePattern = /^\+\d{1,3}\s?\d{4,14}(?:\s\d+)*$/;
     if (!phonePattern.test(phone)) {
-      alert('Please enter a valid phone number including the country code (e.g. +256 780 225 155).');
+      alert('Please enter a valid phone number including the country code (e.g. +256 xxx xxx xxx).');
       return;
     }
 
@@ -117,11 +131,12 @@ const ContactPage = () => {
 
   const contactInfo = [
     {
-      icon: Phone,
-      title: "Call Us",
-      content: "0200 969 992",
-      link: "tel:0200969992"
-    },
+    icon: Phone,
+    title: "Call Us",
+    // MODIFIED: Use arrays for multiple numbers
+    content: ["+256 (0) 200 969 992", "+256 (0) 780 225 155"],
+    link: ["tel:+256200969992", "tel:+256780225155"] 
+  },
     {
       icon: Mail,
       title: "Email Us",
@@ -236,11 +251,19 @@ const ContactPage = () => {
                   </div>
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-indigo-600 rounded-full mr-2"></div>
-                    Metal Fabrication
+                    Mining
                   </div>
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-teal-600 rounded-full mr-2"></div>
                     Project Management
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-yellow-600 rounded-full mr-2"></div>
+                    Industrial Installations
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-red-600 rounded-full mr-2"></div>
+                    General Supplies
                   </div>
                 </div>
               </div>

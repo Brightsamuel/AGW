@@ -19,9 +19,9 @@ export const heroSlides = [
     bgImage: "/images/img13.png",
   },
   {
-    title: "Oil and Gas",
-    subtitle: "Upstream & Downstream Support",
-    description: " Our growth objective is to develop our high quality portfolio in a safe and sustainable way so that we can supply goods that help with upstream and downstream operations.",
+    title: "Mining & Extraction",
+    subtitle: "Powering Your Operations from Pit to Pipeline",
+    description: "We're growing our high-quality supply network safely and sustainably, delivering the gear and support you need for seamless upstream and downstream work—on time, every time.",
     bgImage: "/images/img15.jpg",
   },
   {
@@ -75,9 +75,9 @@ export const servicesData = [
   },
   {
     icon: "Flame", 
-    title: "Oil and Gas",
+    title: "Mining and Extraction",
     description: [
-      "System pressure testing (hydraulic & pneumatic). "
+      "Oil and Gas, Quarrying, Iron ore extraction and System pressure testing (hydraulic & pneumatic). "
     ],
     link: "/oil-and-gas",
   },
@@ -116,7 +116,8 @@ export const contactInfo = {
     address3: "Kampala Business District",
   },
   phone: [
-    "0200 969 992",
+    "256 (0) 200 969 992",
+    "256 (0) 0780 225 155",
   ],
   email: [
     "admiralsgroupcoltd@gmail.com",

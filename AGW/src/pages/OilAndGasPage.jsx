@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
+import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const useInView = (threshold = 0.1) => {
   const ref = useRef(null);
@@ -67,7 +69,7 @@ const images = [
   "/images/O&G4.jpg",
   "/images/O&G5.png",
   "/images/O&G6.png",
-  // Add more image paths as needed
+  // Add more mining/quarrying-themed images as needed
 ];
 
 const OilAndGasPage = () => {
@@ -130,71 +132,107 @@ const OilAndGasPage = () => {
 
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
           <h1 className={`text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg transition-all duration-700 ease-out ${isHeroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Oil and Gas
+            Mining & Extraction
           </h1>
           <p className={`text-lg md:text-xl opacity-90 mb-6 leading-relaxed drop-shadow-md transition-all duration-700 ease-out ${isHeroInView ? 'opacity-100 translate-y-0 delay-200' : 'opacity-0 translate-y-4'}`}>
-            Precision pressure testing for safety and reliability in oil and gas operations.
+            Practical solutions for oil & gas, quarrying, and iron ore extraction across Uganda.
           </p>
           <p className={`text-base opacity-80 max-w-2xl mx-auto drop-shadow-sm transition-all duration-700 ease-out delay-400 ${isHeroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            Expert hydraulic and pneumatic system testing to ensure optimal performance and compliance.
+            From pressure testing to site-ready equipment, we support your extraction operations with reliable supplies and services.
           </p>
         </div>
       </section>
 
+      {/* Main Content Section */}
       <section className="py-20 px-4" ref={mainRef}>
         <div className="max-w-7xl mx-auto">
           <div className={`bg-white rounded-lg shadow-lg p-8 max-w-5xl mx-auto transition-all duration-700 ease-out ${isMainInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Our Oil and Gas Services</h2>
-            <AnimatedText text="Admirals Group specializes in critical oil and gas support services, focusing on system integrity and operational safety. Our pressure testing solutions help maintain high standards in upstream and downstream activities across Uganda and beyond." className="mb-8 text-gray-700 text-center leading-relaxed" />
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Our Mining & Extraction Services</h2>
+            <AnimatedText text="Admirals Group supports mining and extraction projects with hands-on solutions for oil & gas operations, quarrying sites, and iron ore processing. We focus on practical tools, safety, and efficiency to keep your work moving forward." className="mb-8 text-gray-700 text-center leading-relaxed" />
             
             <div className="space-y-8">
+              {/* Oil & Gas Card */}
               <AnimatedCard delay={0.2}>
                 <div className="bg-gradient-to-r from-orange-50 to-red-50 p-6 rounded-lg">
                   <h3 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
-                    System Pressure Testing
+                    Oil & Gas Operations
                   </h3>
                   <ul className="space-y-4 text-gray-700 pl-6 list-disc">
-                    <AnimatedText text="Hydraulic Testing: Comprehensive hydraulic pressure testing to verify system integrity under high-pressure conditions, ensuring safety and leak-free performance." className="text-sm leading-relaxed" />
-                    <AnimatedText text="Pneumatic Testing: Precise pneumatic pressure testing for gas systems, detecting weaknesses and confirming compliance with industry standards." className="text-sm leading-relaxed" />
-                    <AnimatedText text="Custom Solutions: Tailored testing protocols for pipelines, vessels, and equipment, minimizing downtime and maximizing reliability." className="text-sm leading-relaxed" />
+                    <AnimatedText text="System pressure testing (hydraulic & pneumatic) to ensure pipeline and equipment safety in upstream and downstream work." className="text-sm leading-relaxed" />
+                    <AnimatedText text="Drilling rig supplies and maintenance kits for reliable field operations." className="text-sm leading-relaxed" />
+                    <AnimatedText text="Safety gear and monitoring tools tailored for high-risk extraction environments." className="text-sm leading-relaxed" />
                   </ul>
                 </div>
               </AnimatedCard>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <AnimatedCard delay={0.4}>
-                  <div className="bg-white p-6 rounded-lg border border-gray-200">
-                    <h4 className="font-bold text-gray-800 mb-2">Why Choose Our Testing?</h4>
-                    <ul className="space-y-2 text-sm text-gray-600">
-                      <li>• Certified equipment and technicians</li>
-                      <li>• Fast turnaround times</li>
-                      <li>• Full compliance reporting</li>
-                      <li>• On-site or facility-based services</li>
-                    </ul>
-                  </div>
-                </AnimatedCard>
-                <AnimatedCard delay={0.6}>
-                  <div className="bg-white p-6 rounded-lg border border-gray-200">
-                    <h4 className="font-bold text-gray-800 mb-2">Applications</h4>
-                    <ul className="space-y-2 text-sm text-gray-600">
-                      <li>• Pipeline integrity</li>
-                      <li>• Wellhead testing</li>
-                      <li>• Storage tank certification</li>
-                      <li>• Refinery systems</li>
-                    </ul>
-                  </div>
-                </AnimatedCard>
-              </div>
+              {/* Quarrying Card */}
+              <AnimatedCard delay={0.4}>
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-lg">
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                    Quarrying & Site Extraction
+                  </h3>
+                  <ul className="space-y-4 text-gray-700 pl-6 list-disc">
+                    <AnimatedText text="Blasting and drilling equipment rentals, plus spare parts for crushers and screens to keep quarries running." className="text-sm leading-relaxed" />
+                    <AnimatedText text="Aggregate handling tools and conveyor systems for efficient material transport on-site." className="text-sm leading-relaxed" />
+                    <AnimatedText text="Dust control and ventilation supplies to maintain safe, productive work areas." className="text-sm leading-relaxed" />
+                  </ul>
+                </div>
+              </AnimatedCard>
+
+              {/* Iron Ore Extraction Card */}
+              <AnimatedCard delay={0.6}>
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg">
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                    Iron Ore Extraction
+                  </h3>
+                  <ul className="space-y-4 text-gray-700 pl-6 list-disc">
+                    <AnimatedText text="Ore processing consumables like grinding media and flotation chemicals for high-yield extraction." className="text-sm leading-relaxed" />
+                    <AnimatedText text="Heavy-duty excavator and haul truck parts to handle tough terrain and loads." className="text-sm leading-relaxed" />
+                    <AnimatedText text="On-site testing kits and environmental monitoring gear for compliant operations." className="text-sm leading-relaxed" />
+                  </ul>
+                </div>
+              </AnimatedCard>
+            </div>
+
+            {/* Why Choose & Applications Grid */}
+            <div className="grid md:grid-cols-2 gap-6 mt-12">
+              <AnimatedCard delay={0.8}>
+                <div className="bg-white p-6 rounded-lg border border-gray-200">
+                  <h4 className="font-bold text-gray-800 mb-2">Why Partner With Us?</h4>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li>• Proven track record in Uganda's mining sector</li>
+                    <li>• Quick delivery of parts and tools to remote sites</li>
+                    <li>• Cost-effective solutions without cutting corners</li>
+                    <li>• Local expertise for faster response times</li>
+                  </ul>
+                </div>
+              </AnimatedCard>
+              <AnimatedCard delay={1.0}>
+                <div className="bg-white p-6 rounded-lg border border-gray-200">
+                  <h4 className="font-bold text-gray-800 mb-2">Key Applications</h4>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li>• Offshore and onshore drilling rigs</li>
+                    <li>• Quarry blasting and crushing operations</li>
+                    <li>• Iron ore beneficiation plants</li>
+                    <li>• Pipeline and storage facility maintenance</li>
+                  </ul>
+                </div>
+              </AnimatedCard>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section - Simple and Distinct */}
+      {/* CTA Section */}
       <section className="bg-gray-800 text-white py-16 px-4 text-center" ref={ctaRef}>
         <div className={`max-w-3xl mx-auto transition-all duration-700 ease-out ${isCtaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-3xl font-bold mb-4">Ensure Your Systems' Integrity</h2>
-          <AnimatedText text="Contact us for professional pressure testing services tailored to your oil and gas needs." className="text-lg opacity-80 mb-8 leading-relaxed" />
+          <h2 className="text-3xl font-bold mb-4">Gear Up for Your Next Extraction Project</h2>
+          <AnimatedText text="Get in touch for supplies and services that keep your mining operations safe, efficient, and on track." className="text-lg opacity-80 mb-8 leading-relaxed" />
+          <Link 
+            to="/contactus" 
+            className="bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-orange-700 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            Start Your Order <ChevronRight className="w-5 h-5 ml-2 inline" />
+          </Link>
         </div>
       </section>
     </div>

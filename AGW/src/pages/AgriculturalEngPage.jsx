@@ -229,7 +229,7 @@ const AgriculturalEngPage = () => {
                 `}
                 style={{
                   backgroundImage: `url(${image})`,
-                  backgroundSize: 'contain',
+                  backgroundSize: 'cover',  //contain for latter
                   backgroundPosition: 'center',
                   // backgroundRepeat: 'no-repeat',
                   // backgroundColor: '#FFFDFD00',
@@ -395,7 +395,7 @@ const AgriculturalEngPage = () => {
               Get Started Today
             </Link>
             <Link
-              to="/services"
+              to="#"
               className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-green-600 transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center"
             >
               Explore All Services
