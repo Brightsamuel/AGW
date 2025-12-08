@@ -135,7 +135,7 @@ const MorePage = () => {
                     <h3 className="text-3xl font-bold">Our Vision</h3>
                   </div>
                   <p className="text-lg leading-relaxed opacity-95">
-                    To lead the supply market by provide our customers with a great selection of high quality Products and services.
+                    To lead the supply market by providing our customers with a great selection of high quality Products and services.
                   </p>
                 </div>
               </div>

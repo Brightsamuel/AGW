@@ -78,7 +78,7 @@ const AboutUsPage = () => {
   const coreValues = [
     { icon: HandCoins, title: "Value for Money", desc: "We sell quality products at competitive prices.", color: "text-blue-400" },
     { icon: Target, title: "Commitment", desc: "We ensure that our products are delivered on time and in good condition.", color: "text-green-400" },
-    { icon: Shield, title: "Safety", desc: "Your Safelty is our concern.", color: "text-purple-400" },
+    { icon: Shield, title: "Safety", desc: "Your Safety is our concern.", color: "text-purple-400" },
     { icon: Gem, title: "Quality", desc: "Maintaining high quality is our commitment.", color: "text-orange-400" }
   ];
 
